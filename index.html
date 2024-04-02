@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Static Website</title>
+    <title>Connection between share of female characters and photos/videos on fandom page</title>
+    <!-- Add MathJax script -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         body, html {
             margin: 0;
@@ -21,13 +24,13 @@
         }
 
         img {
-            max-height: 70vh;
-            max-width: 100%;
+            max-height: 85vh;
+            max-width: 85%;
         }
 
         .text {
             padding: 20px;
-            text-align: center;
+            text-align: justify; /* Align text to justify */
             width: 100%;
             box-sizing: border-box;
         }
@@ -37,8 +40,16 @@
     <div class="container">
         <img src="got-houses-heatmap.png" alt="Your Image">
         <div class="text">
-            <p>This is your text below the image.</p>
-            <p>You can add more content here.</p>
+            <p>The above figure depicts the connections between the characters of major houses in the TV series Game of Thrones. The figure was made from the directed graph data of Game of Thrones characters. The cells contain the number of edges between the two houses considering the direction. The number of edges were normalized according to the following formula:</p>
+            <!-- Include the mathematical formula -->
+            <p>\[ S_{st} = \frac{{N_{st} \times N}}{{N_s \times N_t}} \]</p>
+            <p>Where
+                \( N_{st} \) is the number of edges between source node's house \( s \) and target node's house \( t \),
+                \( N \) is \( \sum_{st} N_{st} \),
+                \( N_s \) is \( \sum_t N_{st} \), and
+                \( N_t \) is \( \sum_s N_{st} \).
+               If the value is larger than 1 the connection is frequent. Most houses have more connections among themselves than with other houses. The most cliquey houses are Martell and Greyjoy. The Tully and Arryn are close to each other, which is story accurate since they are allies in the series.
+            </p>
         </div>
     </div>
 </body>
