@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connection between share of female characters and photos/videos on fandom page</title>
+    <title>GoT: connections of houses</title>
     <!-- Add MathJax script -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -17,38 +17,47 @@
 
         .container {
             display: flex;
-            flex-direction: column;
+            height: 100%;
+            align-items: center; /* Align items vertically */
+        }
+
+        .image-container {
+            flex: 1;
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
+            padding-right: 20px; /* Add space between image and text */
         }
 
         img {
-            max-height: 70vh;
-            max-width: 85%;
+            max-height: 90vh; /* Increase image height */
+            max-width: 100%; /* Ensure image doesn't exceed container width */
         }
 
-        .text {
-            padding: 20px;
+        .text-container {
+            flex: 1;
+            padding: 20px; /* Reduced padding */
             text-align: justify;
-            width: 100%;
             box-sizing: border-box;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="got-houses-heatmap.png" alt="Your Image">
-        <div class="text">
-            <p>The above figure depicts the connections between the characters of major houses in the TV series Game of Thrones. The figure was made from the directed graph data of Game of Thrones characters. The cells contain the number of edges between the two houses considering the direction. The number of edges were normalized according to the following formula:</p>
+        <div class="image-container">
+            <img src="got-houses-heatmap.png" alt="Your Image">
+        </div>
+        <div class="text-container">
+            <p>The figure portrays the connections between characters of major houses from the TV series Game of Thrones only including houses that are part of the two alliances who fight in the war. It was generated from the directed graph of the characters. The cells contain the number of edges normalized according to the following formula:
             <!-- Include the mathematical formula -->
             <p>\[ S_{st} = \frac{{N_{st} \times N}}{{N_s \times N_t}} \]</p>
             <p>Where
                 \( N_{st} \) is the number of edges between source node's house \( s \) and target node's house \( t \),
-                \( N \) is \( \sum_{st} N_{st} \),
-                \( N_s \) is \( \sum_t N_{st} \), and
-                \( N_t \) is \( \sum_s N_{st} \).
-               If the value is larger than 1 the connection is frequent. Most houses have more connections among themselves than with other houses. The most cliquey houses are Martell and Greyjoy. The Tully and Arryn are close to each other, which is story accurate since they are allies in the series.
+                \( N \) = \( \sum_{st} N_{st} \),
+                \( N_s \) = \( \sum_t N_{st} \), and
+                \( N_t \) = \( \sum_s N_{st} \).
+                The threshold value is 1, so a value greater than 1 shows that the connection is more prevalent, than what we would expect in case of independence, if it is smaller than 1 it is less prevalent.
+                The figure is in line with the story of the series. The houses show cohesiveness, since the values on the diagonal are above threshold. Apart from this the two major alliances are also depicted on the figure. The Stark, Tully and the Arryn houses form one community (rebels) and the Lannisters, Baratheons and Tyrells form another (royalists).                
             </p>
         </div>
     </div>
